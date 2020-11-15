@@ -1,33 +1,44 @@
 <template>
-  <div id="app">
-    <h1>{{ heading }}</h1>
+  <v-app>
+    <MyHeader />
     
-    <div>
-      <h2>{{ heading_basic_list }}</h2>
-      <ol>
-        <li v-for="item in items">
-          {{ item.name }}: {{ item.detail }}
-        </li>
-      </ol>
-    </div>
+    <v-content>
+      <div>
+        <h2>{{ heading_basic_list }}</h2>
+        <ol>
+          <li v-for="item in items">
+            {{ item.name }}: {{ item.detail }}
+          </li>
+        </ol>
+      </div>
 
-    <div>
-      <h2>{{ heading_handling_user_input }}</h2>
-      <p>{{ handling_user_input_message }}</p>
-      <button v-on:click="reverseMessage">Reverse message</button>
-    </div>
+      <div>
+        <h2>{{ heading_handling_user_input }}</h2>
+        <p>{{ handling_user_input_message }}</p>
+        <button v-on:click="reverseMessage">Reverse message</button>
+      </div>
 
-    <div>
-      <h2>{{ heading_handling_input_model }}</h2>
-      <p>{{ handling_input_model_value }}</p>
-      <input v-model="handling_input_model_value">
-    </div>
-  </div>
+      <div>
+        <h2>{{ heading_handling_input_model }}</h2>
+        <p>{{ handling_input_model_value }}</p>
+        <input v-model="handling_input_model_value">
+      </div>
+    </v-content>
+
+    <MyFooter />
+  </v-app>
 </template>
 
 <script>
+import MyHeader from "./components/Header";
+import MyFooter from "./components/Footer";
+
 export default {
   name: 'app',
+  components: {
+    MyHeader,
+    MyFooter
+  },
   data () {
     return {
       heading: 'Welcome to my learning Vue App',
@@ -47,36 +58,5 @@ export default {
       this.handling_user_input_message = this.handling_user_input_message.split('').reverse().join('')
     }
   }
-}
+};
 </script>
-
-<!--
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-
-h1, h2 {
-  font-weight: normal;
-}
-
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
-</style>
--->
