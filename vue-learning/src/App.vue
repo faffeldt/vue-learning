@@ -36,24 +36,12 @@ export default {
   data () {
     return {
       heading: 'Welcome to my learning Vue App',
-      heading_basic_list: 'How to render a basic listing:',
-      items: [
-        { name: 'Brot', detail: 'Schwarzbrot, Graubrot, etc.' },
-        { name: 'Nudeln', detail: 'Spaghetti, Spirelli, Lasagne, etc.' }
-      ],
-      heading_handling_user_input: 'How to handle user input and basic custom methods:',
-      handling_user_input_message: 'Lorem ipsum dolor amen sit',
-      heading_handling_input_model: 'How to handle input fields and model:',
-      handling_input_model_value: 'Lorem ipsum dolor amen sit',
       heading_past_spacex_launches: 'Past 10 SpaceX launches:',
       launches_past: null,
       launches_upcoming: null
     }
   },
   methods: {
-    reverseMessage: function () {
-      this.handling_user_input_message = this.handling_user_input_message.split('').reverse().join('')
-    }
   }
 };
 </script>
