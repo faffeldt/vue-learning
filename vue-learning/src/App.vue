@@ -1,29 +1,23 @@
 <template>
-  <v-app>
+  <v-app dark>
     <MyHeader />
     
-    <v-content>
-      <div>
-        <h2>{{ heading_basic_list }}</h2>
-        <ol>
-          <li v-for="item in items">
-            {{ item.name }}: {{ item.detail }}
-          </li>
-        </ol>
-      </div>
+    <v-main dark>
 
-      <div>
-        <h2>{{ heading_handling_user_input }}</h2>
-        <p>{{ handling_user_input_message }}</p>
-        <button v-on:click="reverseMessage">Reverse message</button>
-      </div>
-
-      <div>
-        <h2>{{ heading_handling_input_model }}</h2>
-        <p>{{ handling_input_model_value }}</p>
-        <input v-model="handling_input_model_value">
-      </div>
-    </v-content>
+      <v-card class="mx-auto" tile>
+        <v-card-title>{{ heading_past_spacex_launches }}</v-card-title>
+        <v-list dense disabled>
+          <v-list-item-group>
+            <v-list-item v-for="launch in this.$parent.launches_past">
+              <v-list-item-content>
+                <v-list-item-title v-text="launch.name + ' - ' + launch.static_fire_date_utc"></v-list-item-title>
+                <p>{{ launch.details }}</p>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-card>
+    </v-main>
 
     <MyFooter />
   </v-app>
@@ -50,7 +44,10 @@ export default {
       heading_handling_user_input: 'How to handle user input and basic custom methods:',
       handling_user_input_message: 'Lorem ipsum dolor amen sit',
       heading_handling_input_model: 'How to handle input fields and model:',
-      handling_input_model_value: 'Lorem ipsum dolor amen sit'
+      handling_input_model_value: 'Lorem ipsum dolor amen sit',
+      heading_past_spacex_launches: 'Past 10 SpaceX launches:',
+      launches_past: null,
+      launches_upcoming: null
     }
   },
   methods: {
